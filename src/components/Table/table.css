@@ -1,0 +1,75 @@
+div.isFixed {
+    position: relative;
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-bottom: 14rem;
+}
+
+div.isFixed table {
+    position: relative;
+}
+
+div.isFixed table thead {
+    position: sticky;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: 45;
+    box-shadow: 1px 1px 1px #e4e4e7a6;
+}
+
+.pill-active {
+    background-color: #E7F7EF;
+    border-radius: 8px;
+    width: max-content;
+    color: #0CAF60;
+}
+
+.pill-active .dot {
+    background-color: #0CAF60;
+}
+
+.pill-inactive {
+    background-color: #FFF0E6;
+    border-radius: 8px;
+    width: max-content;
+    color: #FE964A;
+}
+
+.pill-inactive .dot {
+    background-color: #FE964A;
+}
+
+.pill-overdue {
+    background-color: #fbeced;
+    border-radius: 8px;
+    width: max-content;
+    color: #FD6A6A;
+}
+
+.pill-overdue .dot {
+    background-color: #FD6A6A;
+}
+
+.pill-paid {
+    background-color: #F4F0FF;
+    border-radius: 8px;
+    width: max-content;
+    color: #8C62FF;
+}
+
+.pill-paid .dot {
+    background-color: #8C62FF;
+}
+
+.pill-unpaid {
+    background-color: #FEF7DC;
+    border-radius: 8px;
+    width: max-content;
+    color: #D4A701;
+}
+
+.pill-unpaid .dot {
+    background-color: #D4A701;
+}
