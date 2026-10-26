@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { CloseIcon, DotsVertical } from "../../assets/icons";
+import { useTranslation } from 'react-i18next';
 
 const PaymentActions = ({ data }: { data: any }) => {
 
+    const { t } = useTranslation();
     const [showDropdown, setShowDropdown] = useState<boolean>(false)
 
     const navigate = useNavigate()
@@ -54,16 +56,16 @@ const PaymentActions = ({ data }: { data: any }) => {
                 <div className="px-1">
 
                     <button className="flex items-center gap-2 p-1.5 mt-1 px-2 w-full  text-sm text-[#383A47] font-[500] hover:bg-primary-100 hover:rounded-[8px]">
-                        Edit
+                        {t('payments.actions.edit')}
                     </button>
                     <button className="flex items-center gap-2 p-1.5 px-2  w-full text-sm text-[#383A47] font-[500] hover:bg-primary-100 hover:rounded-[8px]">
-                        View Profile
+                        {t('payments.actions.view_profile')}
                     </button>
 
                 </div>
                 <div className="m-1 border-t border-[#E5EEFE] m-1 pt-1">
                     <button className="flex items-center gap-2 p-1.5 px-2  text-sm text-[#D30000] w-full font-[500] hover:bg-[#F7E6E9] hover:rounded-[8px]">
-                        Delete
+                        {t('payments.actions.delete')}
                     </button>
                 </div>
             </section>

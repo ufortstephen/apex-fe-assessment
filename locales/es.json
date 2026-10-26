@@ -1,0 +1,33 @@
+{
+  "table": {
+    "last_login": "Último inicio de sesión:",
+    "na_placeholder": "N/D",
+    "empty_no_data": "¡No se encontraron datos!"
+  },
+  "utils": {
+    "spinner_loading": "Cargando..."
+  },
+  "payment": {
+    "table_heading": "Encabezado de tabla",
+    "customer_name": "Tynisha Obey",
+    "store_name": "Makostore"
+  },
+  "payments": {
+    "actions": {
+      "edit": "Editar",
+      "view_profile": "Ver perfil",
+      "delete": "Eliminar"
+    },
+    "filter": {
+      "name_label": "Nombre",
+      "name_placeholder": "nombre",
+      "amount_label": "Monto",
+      "user_status_label": "Estado del usuario",
+      "user_status_placeholder": "Todos",
+      "payment_status_label": "Estado del pago",
+      "section_title": "Filtros",
+      "show_results_label": "Mostrar resultado:",
+      "select_placeholder": "Seleccionar"
+    }
+  }
+}
