@@ -2,6 +2,7 @@ import moment from "moment";
 import { formatCurrency, formatDate, formatDateByMonth, formatDateTime, trimText } from "../../util/helpers";
 import Radio from "../Radio/custom-radio";
 import { MouseEvent } from "react";
+import { useTranslation } from 'react-i18next';
 
 type ColumnDefinitionType<T, K extends keyof T> = {
   key: any;
@@ -73,6 +74,7 @@ const TableRows = <T, K extends keyof T>({
   onCellClicked,
   onCheck,
 }: TableRowsProps<T, K>): JSX.Element => {
+  const { t } = useTranslation();
   const findChildByKey = (key: any) => {
     if (children?.props) {
       if (!children?.props?.children.length) {
@@ -219,7 +221,7 @@ const TableRows = <T, K extends keyof T>({
                           </span>
                         </span>
                         <p className={`td-${column.key}   text-[#383A47] font-[500]`}>
-                          Last Login:  {handleData(row, { key: 'last_login' })}
+                          {t('table.last_login')}  {handleData(row, { key: 'last_login' })}
                         </p>
                       </div>
                     )
@@ -270,7 +272,7 @@ const TableRows = <T, K extends keyof T>({
                           : (
                             <>
                               <span className={`td-${column.key} capitalize`}>
-                                {!column.ignoreTrim ? trimText(handleData(row, column), 15) : handleData(row, column) || 'N/A'}
+                                {!column.ignoreTrim ? trimText(handleData(row, column), 15) : handleData(row, column) || t('table.na_placeholder')}
                               </span>
                             </>
                           )}

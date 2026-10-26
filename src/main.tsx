@@ -6,6 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
 import { persistor, store } from "./app/store";
 import "./index.css";
+import "./i18n";
 
 const container = document.getElementById("root");
 

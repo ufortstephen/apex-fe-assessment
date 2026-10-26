@@ -14,8 +14,10 @@ import { paymentStatus, perPageList, userStatus } from "../../util/helpers";
 import PaymentsData from "../../data/payments.json";
 import Pagination from "../../components/Utils/Pagination";
 import NumberSelect from "../../components/Selects/NumberSelect";
+import { useTranslation } from 'react-i18next';
 
 const PaymentFilters = ({ isActive, onFilterChange }: { isActive: boolean, onFilterChange: any }) => {
+    const { t } = useTranslation();
     const [filters, setFilters] = useState(Object)
     const [selectedUserStatus, setSelectedUserStatus] = useState<{
         name: string;
@@ -57,7 +59,7 @@ const PaymentFilters = ({ isActive, onFilterChange }: { isActive: boolean, onFil
                     htmlFor="name"
                     className="block font-[600] leading-6 text-[#111827] w-max text-md"
                 >
-                    Name
+                    {t('payments.filter.name_label')}
                 </label>
                 <div className="mt-2">
                     <InputField
@@ -67,7 +69,7 @@ const PaymentFilters = ({ isActive, onFilterChange }: { isActive: boolean, onFil
                         type="text"
                         value={filters?.name}
                         onChange={(e: any) => setFilters({ ...filters, name: e.target.value })}
-                        placeholder={'name'}
+                        placeholder={t('payments.filter.name_placeholder')}
                         classes={"bg-[#FAFAFA] border-none placeholder:text-[#A0AEC0] placeholder:font-[500] font-[500]"}
                         required
                     />
@@ -78,7 +80,7 @@ const PaymentFilters = ({ isActive, onFilterChange }: { isActive: boolean, onFil
                     htmlFor="amount"
                     className="block font-[600] leading-6 text-[#111827] w-max text-md"
                 >
-                    Amount
+                    {t('payments.filter.amount_label')}
                 </label>
                 <div className="mt-2">
                     <InputField
@@ -99,13 +101,13 @@ const PaymentFilters = ({ isActive, onFilterChange }: { isActive: boolean, onFil
                     htmlFor="user-status"
                     className="block font-[600] leading-6 text-[#111827] w-max text-md"
                 >
-                    User’s Status
+                    {t('payments.filter.user_status_label')}
                 </label>
                 <div className="mt-2">
                     <Select
                         name={'user-status'}
                         label={""}
-                        placeholder="All"
+                        placeholder={t('payments.filter.user_status_placeholder')}
                         data={userStatus}
                         selected={selectedUserStatus}
                         setSelected={onSelectUserStatus}
@@ -118,13 +120,13 @@ const PaymentFilters = ({ isActive, onFilterChange }: { isActive: boolean, onFil
                     htmlFor="user-status"
                     className="block font-[600] leading-6 text-[#111827] w-max text-md"
                 >
-                    Payment Status
+                    {t('payments.filter.payment_status_label')}
                 </label>
                 <div className="mt-2">
                     <Select
                         name={'user-status'}
                         label={""}
-                        placeholder="All"
+                        placeholder={t('payments.filter.user_status_placeholder')}
                         data={paymentStatus}
                         selected={selectedPamentStatus}
                         setSelected={onSelectPaymemtStatus}
@@ -137,6 +139,7 @@ const PaymentFilters = ({ isActive, onFilterChange }: { isActive: boolean, onFil
 }
 
 const Payments = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const { loading, payments } = useAppSelector((state) => state.payments);
     const dispatch = useDispatch<AppDispatch>();
@@ -248,7 +251,7 @@ const Payments = () => {
                             <div className="py-3 p-3 px-5">
                                 <button onClick={() => setIsFilterActive(!isFilterActive)} className="block w-max flex items-center gap-2 text-[15px] font-[500] text-[#0CAF60] bg-[#FAFAFA] ml-auto border border-[#EEEFF2] p-4 py-3.5 rounded-[12px]">
                                     <FilterIcon />
-                                    <span>Filters</span>
+                                    <span>{t('payments.filter.section_title')}</span>
                                 </button>
                             </div>
                             <div className="px-5">
@@ -259,11 +262,11 @@ const Payments = () => {
 
                                 <div className="flex flex-col md:flex-row md:items-center justify-between px-5 pt-6">
                                     <section className="flex items-center gap-2">
-                                        <p className="text-[#718096] font-[400] text-sm">Show result:</p>
+                                        <p className="text-[#718096] font-[400] text-sm">{t('payments.filter.show_results_label')}</p>
                                         <div className="w-max">
                                             <NumberSelect
                                                 data={perPageList}
-                                                placeholder="Select"
+                                                placeholder={t('payments.filter.select_placeholder')}
                                                 showIcon={false}
                                                 selected={perPage}
                                                 label={''} setSelected={(page: any) => setPerPage(page)}
