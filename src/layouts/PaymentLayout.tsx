@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import UserAvatar from "../assets/icons/user-avatar.svg";
 import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from "../language-switcher";
 
 const PaymentLayout = ({ children }: { children: React.ReactNode }) => {
     const { t } = useTranslation();
@@ -11,8 +12,9 @@ const PaymentLayout = ({ children }: { children: React.ReactNode }) => {
                     <Link to="/" className="">
                         <h2 className="text-xl font-bold text-[#111827]">{t('payment.table_heading')}</h2>
                     </Link>
-                    <div className="">
-                        <div className="ml-5  flex items-center gap-x-2 flex-row-reverse md:flex-row relative">
+                    <div className="flex items-center gap-x-3 md:gap-x-5">
+                        <LanguageSwitcher className="h-9 rounded-lg border border-gray-200 bg-white px-2 text-sm text-neutral-700 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" />
+                        <div className="flex items-center gap-x-2 flex-row-reverse md:flex-row relative">
                             <img src={UserAvatar} alt="" className="w-10" />
 
                             <div className="pl-1">
