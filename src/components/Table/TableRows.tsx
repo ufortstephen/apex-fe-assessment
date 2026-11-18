@@ -1,4 +1,3 @@
-import moment from "moment";
 import { formatCurrency, formatDate, formatDateByMonth, formatDateTime, trimText } from "../../util/helpers";
 import Radio from "../Radio/custom-radio";
 import { MouseEvent } from "react";
