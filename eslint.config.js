@@ -1,28 +1,20 @@
 const react = require("eslint-plugin-react");
+const reactHooks = require("eslint-plugin-react-hooks");
 const typescriptEslint = require("@typescript-eslint/eslint-plugin");
 const globals = require("globals");
 const tsParser = require("@typescript-eslint/parser");
 const js = require("@eslint/js");
-const { FlatCompat } = require("@eslint/eslintrc");
-
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all,
-});
 
 module.exports = [
-    ...compat.extends(
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:@typescript-eslint/recommended",
-    ),
+    js.configs.recommended,
+    react.configs.flat.recommended,
+    ...typescriptEslint.configs["flat/recommended"],
     {
         files: ["**/*.{js,jsx,ts,tsx}"],
 
         plugins: {
             react,
+            "react-hooks": reactHooks,
             "@typescript-eslint": typescriptEslint,
         },
 
@@ -45,11 +37,21 @@ module.exports = [
 
         settings: {
             react: {
-                version: "detect",
+                // "detect" relies on context.getFilename(), which ESLint 10 removed,
+                // so read the installed React version directly instead.
+                version: require("react/package.json").version,
             },
         },
 
         rules: {
+            // Same rules as the previous "plugin:react-hooks/recommended" preset.
+            "react-hooks/rules-of-hooks": "error",
+            "react-hooks/exhaustive-deps": "warn",
+            // typescript-eslint v8's "recommended" raised these to errors (or added
+            // them); keep them as warnings, matching the previous v5 setup.
+            "@typescript-eslint/no-explicit-any": "warn",
+            "@typescript-eslint/no-unused-vars": "warn",
+            "@typescript-eslint/no-unused-expressions": "warn",
             "@typescript-eslint/explicit-module-boundary-types": "off",
             "react/react-in-jsx-scope": "off",
         },
